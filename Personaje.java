@@ -4,12 +4,13 @@ public class Personaje {
 	public String localizacion;
 	public String ObjetivoO="";
 	public String ObjetivoL="";
+	int IDPer; //numero de identificacion del personaje
 	
-	
-	public Personaje(String nombre, String localizacion) {
+	public Personaje(String nombre, String localizacion, int IDPer) {
 		super();
 		this.nombre = nombre;
 		this.localizacion = localizacion;
+		this.IDPer = IDPer;
 	}
 	
 	public String getNombre() {
@@ -36,11 +37,13 @@ public class Personaje {
 	public void setObjetivoL(String objetivoL) {
 		this.ObjetivoL = objetivoL;
 	}
+
 	@Override
 	public String toString() {
 		return "Personaje [nombre=" + nombre + ", localizacion=" + localizacion + ", ObjetivoO=" + ObjetivoO
-				+ ", ObjetivoL=" + ObjetivoL + "]";
+				+ ", ObjetivoL=" + ObjetivoL + ", IDPer=" + IDPer + "]";
 	}
+	
 
 	
 	
