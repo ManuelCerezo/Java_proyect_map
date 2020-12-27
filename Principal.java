@@ -9,7 +9,7 @@ public class Principal {
     public static void main(String args[]){ //Funcion para la lectura del fichero donde se interpretan las acciones
 
     	leerFichero();
-    	jugar();
+    	//jugar();
     	creencia();
     	
     }
