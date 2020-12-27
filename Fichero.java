@@ -9,10 +9,13 @@ public class Fichero extends Principal{
         String nuevalinea2 = "";
         String[] partes;
         String[] aux;
+        int IDPer = 0;
+        int IDLug = 0;
+        int IDObj = 0;
         int tipo = 0; //1->Lugar, 2->Personaje, 3->Objeto
 
         try {
-            FileInputStream fichero = new FileInputStream("C:\\Users\\Usuario\\Desktop\\Ingenieria_Software_2\\Programacion_Orientada_objetos\\Proyecto_IA\\src\\Prueba_lectura.txt");
+            FileInputStream fichero = new FileInputStream("C:\\Users\\mhere\\OneDrive\\Escritorio\\U-TAD\\Curso2\\Programacion orientada a objetos\\08-POO\\Proyecto_Java\\Prueba_lectura.txt");
             Scanner src = new Scanner(fichero);
 
             while(src.hasNextLine()) {              
@@ -40,8 +43,9 @@ public class Fichero extends Principal{
                        // System.out.println("\n\n NUEVA LINEA 2 :"+nuevalinea2);
                         aux = nuevalinea2.split("-");
 
-                        Lugar lugar = new Lugar(partes[0],aux);
+                        Lugar lugar = new Lugar(partes[0],aux,IDLug);
                         lugares.add(lugar);
+                        IDLug ++;
             		}
             		else if(tipo == 2) {
             			
@@ -51,8 +55,9 @@ public class Fichero extends Principal{
                         //System.out.println("\n\n NUEVA LINEA 2 :"+nuevalinea2);
                         aux = nuevalinea2.split("-");
 
-                        Personaje personaje = new Personaje(partes[0],aux[0]);
+                        Personaje personaje = new Personaje(partes[0],aux[0],IDPer);
                         personajes.add(personaje);
+                        IDPer ++;
             		}
             		else {
             			nuevalinea = linetxt.replace("(", "-").replace(")", "").replace(",","-").trim();
@@ -64,8 +69,9 @@ public class Fichero extends Principal{
                         //System.out.println("\n\n NUEVA LINEA 2 :"+nuevalinea2);
                         aux = nuevalinea2.split("-");
 
-                        Objeto objeto = new Objeto(partes[0],aux[0]);
+                        Objeto objeto = new Objeto(partes[0],aux[0],IDObj);
                         objetos.add(objeto);
+                        IDObj++;
             		}
             	}
             }	
@@ -107,7 +113,7 @@ public class Fichero extends Principal{
 		int tamanio=0;
 		
 		try {
-			FileInputStream fichero = new FileInputStream("C:\\Users\\Usuario\\Desktop\\Ingenieria_Software_2\\Programacion_Orientada_objetos\\Proyecto_IA\\src\\Objetivos.txt");
+			FileInputStream fichero = new FileInputStream("C:\\Users\\mhere\\OneDrive\\Escritorio\\U-TAD\\Curso2\\Programacion orientada a objetos\\08-POO\\Proyecto_Java\\Objetivos.txt");
             Scanner src = new Scanner(fichero);
             
             while(src.hasNextLine()) {
@@ -128,8 +134,7 @@ public class Fichero extends Principal{
             		nuevalinea = linetxt.replace("(", "-").replace(")", "").trim();
             		partes = nuevalinea.split("-");
             		tamanio = partes.length;
-            		
-            		System.out.println("Tamanio es: "+tamanio);
+            	
             		
             		if(tamanio < 2) {
             			
