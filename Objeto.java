@@ -10,7 +10,18 @@ public class Objeto {
 			this.localizacion = localizacion;
 			this.IDObj = IDObj;
 		}
+		
 	
+		public int getIDObj() {
+			return IDObj;
+		}
+
+
+		public void setIDObj(int iDObj) {
+			IDObj = iDObj;
+		}
+
+
 		public String getNombre() {
 			return nombre;
 		}
