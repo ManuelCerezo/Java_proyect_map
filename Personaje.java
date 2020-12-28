@@ -1,6 +1,7 @@
 
 public class Personaje {
 	public String nombre;
+	public String  bolsillo = null;
 	public String localizacion;
 	public String ObjetivoO="";
 	public String ObjetivoL="";
@@ -13,6 +14,22 @@ public class Personaje {
 		this.IDPer = IDPer;
 	}
 	
+	public int getIDPer() {
+		return IDPer;
+	}
+
+	public void setIDPer(int iDPer) {
+		IDPer = iDPer;
+	}
+
+	public String getBolsillo() {
+		return bolsillo;
+	}
+
+	public void setBolsillo(String bolsillo) {
+		this.bolsillo = bolsillo;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
