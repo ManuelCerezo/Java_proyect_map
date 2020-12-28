@@ -3,6 +3,7 @@ import java.util.Arrays;
 public class Lugar {
 	public String nombre;
 	public String[] adyaciencias;
+	int longitudArray;
 	int IDLug; //numero de identificacion del lugar
 	
 	public Lugar(String nombre, String[] adyaciencias, int IDLug) {
@@ -10,7 +11,11 @@ public class Lugar {
 		this.adyaciencias = adyaciencias;
 		this.IDLug = IDLug;
 	}
-	
+	public int calcularLongitud() {
+		longitudArray = this.adyaciencias.length;
+		return longitudArray;
+		
+	}
 	
 	public String getNombre() {
 		return nombre;
