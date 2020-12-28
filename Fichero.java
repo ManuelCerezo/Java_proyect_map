@@ -103,6 +103,14 @@ public class Fichero extends Principal{
 			System.out.println("");
 		}
 	}
+	public void imprimirPer() {
+		System.out.println("[     PERSONAJES     ]\n");
+        for(Personaje lili:personajes) {
+			System.out.print(lili.toString()+"\n");
+			System.out.println("");
+		}
+	}
+	
 	
 	public void objetivos(){
 		
