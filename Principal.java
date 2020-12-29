@@ -12,14 +12,37 @@ public class Principal {
 		fichero.inicializar();
 		fichero.objetivos();
 		fichero.imprimir();
+		CreenciasINI();	 
+		
+	
+
 		//Para imprimir solo los personajes --> fichero.imprimirPer();
     	jugar();
     	
+    	
     }
+	public static void CreenciasINI() { //Inicializamos las creencias, sus id y las matrices
+		int num = 0;
+		//Incializamos array de creencias
+		for(num = 0 ; num < personajes.size() ; num++) {
+			Creencia per = new Creencia();
+			per.setIdPer(num);
+			creencias.add(per);
+		}
+		//Inicializamos las matrice de cada objeto dentro del array de creencias
+		for(Creencia lali:creencias) {
+			//System.out.println(lali.toString());
+			lali.matricesINI();
+			//lali.imprimir();
+			
+		}
+		
+	}
+   
     //------------- Funciones -------------------------------
     //Pedir objetos-PENDIENTE DE PROFE
     //mover personaje
-    //actualizar creencias
+    //actualizar creencias (Para cada accion y fuera de estas funciones)
     
     //Intercambiamos el objeto que tiene el personaje por el que se encuentra en el lugar:
     
@@ -47,8 +70,16 @@ public class Principal {
     	
     }
     
+    
     public static void darObj(Personaje personaje1, Personaje personaje2) {
     	//Suponiendo que es el personaje2 quien da el objeto	
+    	int num=0;
+    	//String[] nombrePer = new String[personajes.size()];
+    	int[] idPer = new int[personajes.size()]; //lista de Id de todos los que haya en la sala
+    	int idPerAntigua = personaje2.getIDPer();
+    	int idPerNueva = personaje1.getIDPer();
+    	int i = 0;
+    	int idObj = 0;
     	
 		for(Objeto tete:objetos) {		
 			//Actualizamos los bolsillos de los personajes	
@@ -56,27 +87,88 @@ public class Principal {
 			if (tete.getNombre().equals(personaje2.getBolsillo())) {
 				personaje1.setBolsillo(personaje2.getBolsillo());
 				tete.setLocalizacion(personaje1.getNombre());
+				idObj = tete.getIDObj();
 			}
+		 }	
 			personaje2.setBolsillo(null);
-		} 
-    }
+	
+			// A C T U A L I Z A R		C R E E N C I A S
+			
+		for(Personaje teti:personajes) { //Guardamos en un array todos los personajes que hay en la sala
+			if(personaje1.getLocalizacion().equals(teti.getLocalizacion())) {
+				idPer[num] = teti.getIDPer();
+				num++;
+			}
+		}
+		
+		for(Creencia apple:creencias) {
+			
+			for(i=0; i<= idPer.length; i++) {
+				if(apple.getIdPer() == idPer[i]) {
+					
+					apple.actualizarObjPer(idPerNueva,idPerAntigua, idObj);
+					
+				}
+			}
+		}
+    }			
+
+
     
 	public static void intercambioPerPer(Personaje personaje1, Personaje personaje2) {		
 		String aux;	
-		for(Objeto tete:objetos) {
-			aux = personaje1.getBolsillo();
-			
-			//Actualizamos los bolsillos de los personajes
-			
-			if (tete.getNombre().equals(personaje2.getBolsillo())) {
-				personaje1.setBolsillo(personaje2.getBolsillo());
-				tete.setLocalizacion(personaje1.getNombre());
+		int[] idPer = new int[personajes.size()]; //lista de Id de todos los que haya en la sala
+    	int idPerAntigua1 = personaje2.getIDPer();
+    	int idPerNueva1 = personaje1.getIDPer();
+    	int idPerAntigua2 = personaje1.getIDPer();
+    	int idPerNueva2 = personaje2.getIDPer();
+    	int i = 0;
+    	int num = 0;
+    	int idObj1 = 0;
+    	int idObj2 = 0;
+		
+		if(!personaje1.getBolsillo().equals(null)){
+    		darObj(personaje1,personaje2);
+    	}
+		else {
+			for(Objeto tete:objetos) {
+				aux = personaje1.getBolsillo();
+				
+				//Actualizamos los bolsillos de los personajes
+				
+				if (tete.getNombre().equals(personaje2.getBolsillo())) {
+					personaje1.setBolsillo(personaje2.getBolsillo());
+					idObj1 = tete.getIDObj();
+					tete.setLocalizacion(personaje1.getNombre()); // Actualizamos localizacion objeto
+				}
+				if (tete.getNombre().equals(aux)) {
+					personaje2.setBolsillo(aux);
+					idObj2 = tete.getIDObj();
+					tete.setLocalizacion(personaje2.getNombre());
+				}
+				
 			}
-			if (tete.getNombre().equals(aux)) {
-				personaje2.setBolsillo(aux);
-				tete.setLocalizacion(personaje2.getNombre());
+			// A C T U A L I Z A R		C R E E N C I A S
+			//Personaje1
+			for(Personaje teti:personajes) { 
+				if(personaje1.getLocalizacion().equals(teti.getLocalizacion())) { //Guardamos en un array todos los personajes que hay en la sala
+					idPer[num] = teti.getIDPer();
+					num++;
+				}
 			}
-		}    	
+			for(Creencia apple:creencias) {
+				
+				for(i=0; i<= idPer.length; i++) {
+					if(apple.getIdPer() == idPer[i]) {
+						
+						apple.actualizarObjPer(idPerNueva1,idPerAntigua1, idObj1);
+						apple.actualizarObjPer(idPerNueva2,idPerAntigua2, idObj2);
+						
+					}
+				}
+			}
+		}
+		
 	}
     public static void pedirObj() {
     	// SI SE PUEDEN RECHAZAR LOS INTERCAMBIOS ESTA FUNCION HAY QUE HACERLA
@@ -124,11 +216,6 @@ public class Principal {
     	}
     }
     
-    public static void creencia() {
-    	Creencia creencias = new Creencia();
-    	creencias.objetosLocINI();
-    	creencias.imprimir();
-    }
     public static void jugar(){
     	
     	rondas();
@@ -143,10 +230,14 @@ public class Principal {
     	// VER PDF LA PARTE DE: DINAMICA DEL JUEGO
     	
     	//Realizamos un for each porque cada accion se hara por turnos para cada personaje
-		for (Personaje papi:personajes) {
+		
+    	/*for (Personaje papi:personajes) {
     		//cerebro(); ha de ser la funcion que decida que van a hacer los personajes
 
     	}
+		
+		Gestor gestores = new Gestor();
+		*/
 
     }
      
