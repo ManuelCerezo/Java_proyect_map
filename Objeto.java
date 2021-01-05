@@ -2,8 +2,8 @@
 public class Objeto {
 
 		public String nombre;
-		public String localizacion;
-		int IDObj; //numero de identificacion del objeto
+		public String localizacion; //la llave esta en maria
+		int IDObj; 
 
 		public Objeto(String nombre, String localizacion, int IDObj) {
 			this.nombre = nombre;

@@ -1,6 +1,7 @@
 <Objetos>
-Llave(Cocina)
+Llave(Maria)
 Ordenador(Comedor)
+Silla(Comedor)
 Cartera(Jardin)
 Pan(Jorge)
 <Personajes>

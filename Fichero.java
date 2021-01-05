@@ -1,9 +1,9 @@
 import java.io.FileInputStream;
 import java.util.Scanner;
 
-public class Fichero extends Principal{
+public class Fichero extends Clase_Compartida{
 	
-	public void inicializar() {
+	public static void inicializar() {
 		String linetxt = "";
         String nuevalinea = "";
         String nuevalinea2 = "";
@@ -15,7 +15,7 @@ public class Fichero extends Principal{
         int tipo = 0; //1->Lugar, 2->Personaje, 3->Objeto
 
         try {
-            FileInputStream fichero = new FileInputStream("C:\\Users\\mhere\\OneDrive\\Escritorio\\U-TAD\\Curso2\\Programacion orientada a objetos\\08-POO\\Proyecto_Java\\Prueba_lectura.txt");
+            FileInputStream fichero = new FileInputStream("C:\\Users\\mhere\\OneDrive\\Escritorio\\U-TAD\\Curso2\\Programacion orientada a objetos\\08-POO\\Trabajos\\ProyectoJavaV2\\src\\Prueba_lectura.txt");
             Scanner src = new Scanner(fichero);
 
             while(src.hasNextLine()) {              
@@ -85,7 +85,7 @@ public class Fichero extends Principal{
             e.printStackTrace();
         }
     }
-	public void imprimir() {
+	public static void imprimir() {
 		System.out.println("[     LUGARES     ]\n");
         
         for(Lugar nini:lugares) {
@@ -121,7 +121,7 @@ public class Fichero extends Principal{
 		int tamanio=0;
 		
 		try {
-			FileInputStream fichero = new FileInputStream("C:\\Users\\mhere\\OneDrive\\Escritorio\\U-TAD\\Curso2\\Programacion orientada a objetos\\08-POO\\Proyecto_Java\\Objetivos.txt");
+			FileInputStream fichero = new FileInputStream("C:\\Users\\mhere\\OneDrive\\Escritorio\\U-TAD\\Curso2\\Programacion orientada a objetos\\08-POO\\Trabajos\\ProyectoJavaV2\\src\\Objetivos.txt");
             Scanner src = new Scanner(fichero);
             
             while(src.hasNextLine()) {

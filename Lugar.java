@@ -4,7 +4,7 @@ public class Lugar {
 	public String nombre;
 	public String[] adyaciencias;
 	int longitudArray;
-	int IDLug; //numero de identificacion del lugar
+	int IDLug; 
 	
 	public Lugar(String nombre, String[] adyaciencias, int IDLug) {
 		this.nombre = nombre;
@@ -37,16 +37,15 @@ public class Lugar {
 	}
 
 
+	public int getIDLug() {
+		return IDLug;
+	}
+	public void setIDLug(int iDLug) {
+		IDLug = iDLug;
+	}
 	@Override
 	public String toString() {
 		return "Lugar [nombre=" + nombre + ", adyaciencias=" + Arrays.toString(adyaciencias) + ", IDLug=" + IDLug + "]";
 	}
-	
-	
 
-
-	
-	
-	
-	
 }

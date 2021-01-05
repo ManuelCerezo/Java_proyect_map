@@ -4,6 +4,6 @@ Ordenador
 Cartera(Jorge)
 Pan(Maria)
 <Localizacion Personajes>
-Jorge(Jardin)
+Jorge(Dormitorio)
 Esther(Comedor)
 Maria(Comedor)
