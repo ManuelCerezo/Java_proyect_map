@@ -1,2 +1,2 @@
 # Proyecto_IA
-Proyecto de java inteligencia artificial
+Proyecto de java orientado a objetos
