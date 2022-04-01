@@ -1,2 +1,1 @@
-
-Proyecto de java orientado a objetos
+Proyecto juego desarrollado en Java.
